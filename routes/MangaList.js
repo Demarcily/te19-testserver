@@ -6,10 +6,10 @@ router.get('/', async (req, res, next) => {
   await pool.promise()
     .query('SELECT * FROM MangaList')
     .then(([rows, fields]) => {
-      res.json({
-        MangaList: {
-          data: rows
-        }
+      res.render('Manga.njk', {
+        MangaList: rows,
+        title: 'Manga',
+        layout: 'layout.njk'
       });
     })
     .catch(err => {
