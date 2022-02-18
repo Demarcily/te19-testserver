@@ -5,4 +5,11 @@ body {
 a {
   color: #00B7FF; }
 
+p {
+  border: 1px solid red;
+  display: inline-block; }
+
+div {
+  border: 1px solid black; }
+
 /*# sourceMappingURL=style.css.map */
