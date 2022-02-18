@@ -62,6 +62,9 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:id/delete', async (req, res, next) => {
   const id = req.params.id;
+
+  await pool.promise()
+  .query('DELETE FROM tasks WHERE id = ?', [id])
   res.json(`deleting task ${id}`);
 });
 
