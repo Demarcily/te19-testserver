@@ -1,0 +1,12 @@
+{% extends layout %}
+{% block content %}
+  <div>
+    {% for task in tasks %}
+      <p>{{task.id}}</p>
+      <p>{{task.task}}</p>
+      <p>{{task.completed}}</p>
+      <p>{{task.created_at}}</p>
+      <p>{{task.updated_at}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
