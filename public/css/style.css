@@ -4,18 +4,27 @@
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #fde8c7; }
 
 p {
-  display: inline-block; }
+  display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem; }
 
-div {
-  margin-bottom: 10px; }
-  div .tasks {
-    border: 1px solid black;
-    padding: 5px; }
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 4px; }
+
+div .tasks {
+  border-bottom: 1px solid #b1b1b1; }
+
+input {
+  padding: 8px; }
+
+.container {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px; }
 
 /*# sourceMappingURL=style.css.map */

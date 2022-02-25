@@ -2,26 +2,33 @@
   padding: 0;
   margin: 0;
 }
-
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+  background-color: rgb(253, 232, 199);
 }
-
-a {
-  color: #00B7FF;
-}
-
 p {
   display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
-
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
 div {
-  margin-bottom: 10px;
   .tasks {
-    border: 1px solid black;
-    padding: 5px;
+    border-bottom: 1px solid rgb(177, 177, 177);
   }
 }
+input {
+  padding: 8px;
+}
+.container {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
 

@@ -1,27 +1,35 @@
 {% extends layout %}
 {% block content %}
-  <div>
-    <form action="/tasks" method="post">
-      <label for="task">Task</label>
-      <input 
-        type="text" 
-        name="task" 
-        id="task" 
-        value="{{ task }}" 
-        placeholder="Write a task" 
-        required>
-      <button type="submit">Add Task</button>
-    </form>
-  </div>
-  <div>
-    {% for task in tasks %}
-      <div class="tasks">
-        <h3>{{task.task}}</h3>
-        <p>id: {{task.id}}</p>
-        <p>Completions: {{task.completed}} ||</p>
-        <p>Created At: {{task.created_at}} ||</p>
-        <p>Updated At: {{task.updated_at}}</p>
-      </div>
-    {% endfor %}
-  </div>
+  <main class="container">
+    <div>
+      <form action="/tasks" method="post">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Task</span>
+          <input 
+            class="form-control" 
+            type="text" 
+            name="task" 
+            id="task" 
+            value="{{ task }}" 
+            placeholder="Input task" 
+            required 
+            aria-label="Sizing example input" 
+            aria-describedby="inputGroup-sizing-sm">
+          <button class="btn btn-primary" type="submit">Add Task</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      {% for task in tasks %}
+        <div class="tasks card-body">
+          <h3 class="card-title">{{task.task}}</h3>
+          <p class="card-text">id: {{task.id}}</p>
+          <p class="card-text">Completed: {{task.completed}} ||</p>
+          <p class="card-text">Created At: {{task.created_at}} ||</p>
+          <p class="card-text">Updated At: {{task.updated_at}}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
 {% endblock %}
