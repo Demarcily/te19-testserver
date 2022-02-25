@@ -78,14 +78,24 @@ router.get('/:id/delete', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const task = req.body.task;
+
+  if (task.length < 3) {
+   
+  }
+
   await pool.promise()
   .query('INSERT INTO tasks (task) VALUES (?)', [task])
   .then((response) => {
-    res.json({
-      task: {
-        data: response
-      }
-    });
+    console.log(response[0].affectedRows);
+    if (response[0].affectedRows == 1) {
+      res.redirect('/tasks');
+    } else {
+      res.status(400).json({
+        task: {
+          error: 'Invaild task'
+        }
+      })
+    }
   })
   .catch(err => {
     console.log(err);
