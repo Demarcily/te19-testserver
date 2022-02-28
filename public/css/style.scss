@@ -9,10 +9,6 @@ body {
   background-color: rgb(253, 232, 199);
 }
 
-a {
-  float:right;
-}
-
 p {
   display: inline-block;
   font-size: 1rem;
@@ -25,15 +21,12 @@ h3 {
 }
 
 div {
-
   .tasks {
     border-bottom: 1px solid rgb(177, 177, 177);
   }
 }
 
-input {
-  padding: 8px;
-}
+
 
 .container {
   padding: 15px;

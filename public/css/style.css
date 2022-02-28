@@ -7,9 +7,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #fde8c7; }
 
-a {
-  float: right; }
-
 p {
   display: inline-block;
   font-size: 1rem;
@@ -21,9 +18,6 @@ h3 {
 
 div .tasks {
   border-bottom: 1px solid #b1b1b1; }
-
-input {
-  padding: 8px; }
 
 .container {
   padding: 15px;

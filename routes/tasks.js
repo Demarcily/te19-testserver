@@ -66,8 +66,11 @@ router.get('/:id/delete', async (req, res, next) => {
   await pool.promise()
   .query('DELETE FROM tasks WHERE id = ?', [id])
   .then((response) => {
-    console.log(response);
-    res.redirect('/tasks');
+    if (response[0].affectedRows == 1) {
+      res.redirect('/tasks');
+    } else {
+      res.status(400).redirect('/tasks');
+    }
   })
   .catch(err => {
     console.log(err);
