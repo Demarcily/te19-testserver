@@ -16,12 +16,12 @@ h3 {
   font-size: 1.5rem;
   margin-bottom: 4px; }
 
-div .tasks {
-  border-bottom: 1px solid #b1b1b1; }
-
 .container {
   padding: 15px;
   background-color: white;
   border-radius: 10px; }
+
+.MangaDiv {
+  border-bottom: 1px solid grey; }
 
 /*# sourceMappingURL=style.css.map */
