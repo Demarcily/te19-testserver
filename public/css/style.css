@@ -7,6 +7,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #fde8c7; }
 
+a {
+  float: right; }
+
 p {
   display: inline-block;
   font-size: 1rem;

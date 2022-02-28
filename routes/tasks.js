@@ -65,15 +65,18 @@ router.get('/:id/delete', async (req, res, next) => {
 
   await pool.promise()
   .query('DELETE FROM tasks WHERE id = ?', [id])
+  .then((response) => {
+    console.log(response);
+    res.redirect('/tasks');
+  })
   .catch(err => {
     console.log(err);
     res.status(500).json({
-      tasks: {
+      task: {
         error: 'Error getting tasks'
       }
     })
   });
-  res.json(`deleting task ${id}`);
 });
 
 router.post('/', async (req, res, next) => {
@@ -108,22 +111,3 @@ router.post('/', async (req, res, next) => {
 });
 
 module.exports = router;
-
-
-
-/*
-await pool
-  .promise()
-  .query('SELECT * FROM users')
-  .then(([rows, fields]) => {
-    res.json({
-      data: rows,
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json({
-    error: 'Database error',
-    });
-  });
-*/ 
