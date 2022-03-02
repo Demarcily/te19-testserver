@@ -10,10 +10,14 @@ const pool = require('../database');
     DELETE /:id - Delete a task by id
 */
 router.get('/', async (req, res, next) => {
+  const flash = req.session.flash;
+  console.log(flash);
+  req.session.flash = null;
   await pool.promise()
     .query('SELECT * FROM tasks')
     .then(([rows, fields]) => {
       res.render('tasks.njk', {
+        flash: flash,
         tasks: rows,
         title: 'Tasks',
         layout: 'layout.njk'
@@ -62,13 +66,22 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:id/delete', async (req, res, next) => {
   const id = req.params.id;
-
+  const task = req.body.task;
+  const test = task;
   await pool.promise()
   .query('DELETE FROM tasks WHERE id = ?', [id])
   .then((response) => {
     if (response[0].affectedRows == 1) {
+      req.session.flash = {
+        msg: 'Task deleted successfully',
+        task: test + "' was deleted"
+      }
       res.redirect('/tasks');
     } else {
+      req.session.flash = {
+        msg: 'Task was not found',
+        task: null
+      }
       res.status(400).redirect('/tasks');
     }
   })
@@ -84,9 +97,16 @@ router.get('/:id/delete', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const task = req.body.task;
-
+  const flash = req.session.flash;
+  console.log(flash);
+  req.session.flash = null;
+  
   if (task.length < 3) {
-   
+    res.status(400).json({
+      task: {
+          error: 'A task must have at least 3 characters'
+      }
+    });
   }
 
   await pool.promise()
@@ -94,13 +114,17 @@ router.post('/', async (req, res, next) => {
   .then((response) => {
     console.log(response[0].affectedRows);
     if (response[0].affectedRows == 1) {
+      req.session.flash = {
+        msg: 'Successfully posted task',
+        task: task + "' was added"
+      }
       res.redirect('/tasks');
     } else {
-      res.status(400).json({
-        task: {
-          error: 'Invaild task'
-        }
-      })
+      req.session.flash = {
+        msg: 'Task failed to post',
+        task: null
+      }
+      res.redirect('/tasks');
     }
   })
   .catch(err => {

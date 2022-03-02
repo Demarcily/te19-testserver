@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const nunjucks = require('nunjucks');
+const session = require('express-session');
 
 
 
@@ -33,6 +34,12 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'EldenRing',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { sameSite: true }
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
