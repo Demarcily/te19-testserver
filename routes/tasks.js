@@ -137,4 +137,26 @@ router.post('/', async (req, res, next) => {
   });
 });
 
+router.post('/:id/complete', async (req, res, next) => {
+  const id = req.params.id;
+  if (isNaN(req.params.id)) {
+    res.status(400).json({
+      task: {
+        error: 'Bad request'
+      }
+    });
+  }
+
+  await pool.promise()
+  .query('UPDATE tasks SET completed = !completed WHERE id = (?)', [id])
+  .then((response) => {
+    console.log(response);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+});
+
+
+
 module.exports = router;
