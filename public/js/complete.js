@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 
   checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', (e) => {
-      console.log(e.target.checked);
+      console.log(e.target);
       const id = e.target.id.split("-")[1];
 
       const url = `/tasks/${id}/complete`;
@@ -14,6 +14,17 @@ window.addEventListener('load', () => {
         method: 'POST',
       }).then(response => {
         console.log(response);
+        if (e.target.checked) {
+          req.session.flash = {
+            msg: 'Task completed',
+            task: task + "' was added"
+          }
+        } else {
+          req.session.flash = {
+            msg: 'Task uncompleted',
+            task: task + "' was added"
+          }
+        }
       }).catch(error => {
         console.error(error);
       });

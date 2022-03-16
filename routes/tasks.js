@@ -151,6 +151,7 @@ router.post('/:id/complete', async (req, res, next) => {
   .query('UPDATE tasks SET completed = !completed WHERE id = (?)', [id])
   .then((response) => {
     console.log(response);
+    
   })
   .catch(err => {
     console.log(err);

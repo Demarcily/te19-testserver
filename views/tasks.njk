@@ -15,7 +15,7 @@
             required 
             aria-label="Sizing example input" 
             aria-describedby="inputGroup-sizing-sm">
-          <button class="btn btn-primary" type="submit">Add Task</button>
+            <button class="btn btn-primary" type="submit">Add Task</button>
         </div>
       </form>
     </div>
@@ -28,6 +28,7 @@
           <p class="card-text">Created At: {{task.created_at}} ||</p>
           <p class="card-text">Updated At: {{task.updated_at}}</p>
         </div>
+
         <div class="d-flex">
           <div class="form-check me-3">
             <input 
@@ -36,6 +37,7 @@
               value="{{task.completed}}"
               name="task-{{task.id}}"
               id="task-{{task.id}}"
+              data-task="{{task.task}}"
               {% if task.completed %} checked {% endif %}>
             <label 
               class="form-check-label"
